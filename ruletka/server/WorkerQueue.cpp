@@ -1,0 +1,81 @@
+/*
+* Document-class:  WorkerQueue and ServerWorker
+*
+* Queue for Workers and Worker Wrapper
+* file: WorkerQueue.cpp
+* author: JO
+*/
+
+/*! 
+  \brief Queue implementation
+  \version 1.0
+  \file WorkerQueue.cpp
+  \package Server
+  \date 2009-03
+  \todo Bremove comments, refactor units of work
+*/
+
+#include "WorkerQueue.h"
+
+WorkerQueue::WorkerQueue(){
+  //initialize meh
+}
+
+void WorkerQueue::push(ServerWorker* worker){
+  //mutex lock (scoped)
+  boost::mutex::scoped_lock scoped_lock(mutex);
+  worker->add();
+  this->workers_list.push_back(worker);
+
+}
+int WorkerQueue::size(){
+	return this->workers_list.size();
+  
+
+}
+
+ServerWorker* WorkerQueue::pop(){
+  //mutex lock (scoped)
+  boost::mutex::scoped_lock scoped_lock(mutex);
+  ServerWorker* worker = this->workers_list.front();
+  this->workers_list.erase(this->workers_list.end()-1);
+  return worker;
+}
+
+ServerWorker* WorkerQueue::popServerWorkerAt(int id){
+ //mutex lock (scoped)
+	std::vector<ServerWorker*>::iterator iter;
+	iter = this->workers_list.begin();
+  boost::mutex::scoped_lock scoped_lock(mutex);
+  ServerWorker* worker = this->workers_list.at(id);
+//  this->workers_list.pop_front();
+  this->workers_list.erase(iter + id);
+  return worker;
+	
+}
+
+
+
+ServerWorker::ServerWorker(int sockfd){
+  this->sockfd = sockfd;
+}
+
+int ServerWorker::getWorkerAss(){
+  return this->sockfd;
+}
+
+void ServerWorker::die(){
+  close(this->sockfd);
+}
+
+void ServerWorker::add(){
+    this->numb = numb+1;
+}
+
+int ServerWorker::getNumb(){
+    return this->numb;
+}
+
+int WorkerQueue::ServerWorkerAt(int id){
+  return this->workers_list.at(id)->getNumb();
+}

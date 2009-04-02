@@ -1,0 +1,4 @@
+Testy , Testowanie i Testy
+-------------------------
+
+- Jeśli chodzi o testy to możemy wykorzystać BOOST TEST albo skorzystac z bardzo prymitywnego mechanizmu ktory wrzucilem jest on na tyle prosty szok :) i portuje sie ladnie na kazda platforme. wszyskto widac w sample_test.c

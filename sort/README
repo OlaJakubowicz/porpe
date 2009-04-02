@@ -1,0 +1,48 @@
+Czesc wszystkim.
+
+- Aby zrobic klona repo musicie zrobic
+
+  git clone <url do repo>
+
+- Aby cos wkomitowac lokalnie
+
+  git add .
+  git commit -m 'first commit'
+
+- Aby popchnac cos do repa glownego
+
+  git push <alias | url>
+
+- Aby dodac alias do repa
+
+  git remote add origin git@github.com:JakubOboza/srcc.git
+
+- Aby sprawdzic status repa na ktorym pracujecie 
+
+  git status
+
+------------------------------------------------------
+
+- .gitignore jest od tego abyúcie dodawali ignory na pliki projektow z waszych IDE
+
+- katalogi
+
+ bin/    - binarki
+ lib/    - dzielone rzeczy miedzy klienta i server
+ client/ - pliki klienta
+ server/ - pliki servera
+ test/   - folder testow (unit) 
+
+------------------------------------------------------
+
+A i najwazniejsze, guys dodawajcie do komitÛw opisy co kto dodaje i po co  :) 
+
+-----------------------------------------------------
+
+I uprasza sie o nie rozpierdzielanie koncow lini  plikach tekstowych
+
+Pozdrawiam Kuba
+
+------------------------------------------------------
+
+- Wa˝ne rzeczy, nie komitujemy plków tymczasowych (git status) SPRAWDZ zanim cos wkomitujesz. via File.h~. jakas dziwna redundancja jest bo bash_create_output jest w bin i w workerze. Mo˝e ktoÊ zapomina usowac nie wiem. Pliki bashowych skryptow powinny byç z rozszerzeniem .sh. 
